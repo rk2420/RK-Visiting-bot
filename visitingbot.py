@@ -1,6 +1,6 @@
 from telegram.ext import Application, MessageHandler, CommandHandler, filters
 from telegram import Update
-import pytesseract-ocr
+import pytesseract
 from PIL import Image
 import cv2
 import numpy as np
@@ -25,7 +25,7 @@ if not GROQ_API_KEY:
     raise ValueError("❌ GROQ_API_KEY not set")
 
 # Windows only – update if needed
-pytesseract.pytesseract.tesseract-ocr_cmd = "tesseract"
+pytesseract.pytesseract.tesseract_cmd = "tesseract"
 # =========================================
 
 logging.basicConfig(level=logging.INFO)
@@ -268,6 +268,7 @@ app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
 
 print("🚀 Bot is LIVE and listening...")
 app.run_polling()
+
 
 
 
