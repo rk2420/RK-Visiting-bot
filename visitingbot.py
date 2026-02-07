@@ -1,6 +1,12 @@
 from telegram.ext import Application, MessageHandler, CommandHandler, filters
 from telegram import Update
-import pytesseract
+import easyocr
+
+reader = easyocr.Reader(['en'], gpu=False)
+
+result = reader.readtext(image_path, detail=0)
+ocr_text = "\n".join(result)
+
 from PIL import Image
 import cv2
 import numpy as np
@@ -268,6 +274,7 @@ app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
 
 print("🚀 Bot is LIVE and listening...")
 app.run_polling()
+
 
 
 
