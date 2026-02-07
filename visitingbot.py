@@ -7,6 +7,7 @@ import numpy as np
 from openpyxl import load_workbook
 from datetime import datetime
 import json
+import os
 import re
 import logging
 from groq import Groq
@@ -267,6 +268,7 @@ app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
 
 print("🚀 Bot is LIVE and listening...")
 app.run_polling()
+
 
 
 
