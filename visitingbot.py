@@ -12,10 +12,16 @@ import logging
 from groq import Groq
 
 # ================= CONFIG =================
-BOT_TOKEN = ("BOT_TOKEN")
-GROQ_API_KEY = ("GROQ_API_KEY")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 MODEL_NAME = "llama-3.1-8b-instant"
 EXCEL_FILE = "visiting_cards.xlsx"
+
+if not BOT_TOKEN:
+    raise ValueError("❌ BOT_TOKEN not set")
+
+if not GROQ_API_KEY:
+    raise ValueError("❌ GROQ_API_KEY not set")
 
 # Windows only – update if needed
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
@@ -261,6 +267,7 @@ app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
 
 print("🚀 Bot is LIVE and listening...")
 app.run_polling()
+
 
 
 
