@@ -1,8 +1,11 @@
 python-telegram-bot
-pytesseract
+easyocr
+torch
+torchvision
 pillow
 opencv-python-headless
 numpy
 openpyxl
 groq
 pandas
+
